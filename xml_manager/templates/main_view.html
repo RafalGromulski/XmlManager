@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %} XML Manager by Rafał {% endblock %}
+{% block page_content %}
+<div class="card border-0" style="width: 100%;">
+    <div class="card-body">
+        <a href="{% url 'login' %}"
+           class="btn btn-primary btn-lg active position-absolute top-0 end-0"
+           style="width: 150px;"
+           role="button"
+           aria-pressed="true">
+            <i class="bi bi-box-arrow-in-right"></i> Login</a>
+    </div>
+    <h1 class="card-title text-center" style=font-size:60px>XML Manager</h1>
+</div>
+{% endblock %}
