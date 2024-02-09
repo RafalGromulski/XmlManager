@@ -2,20 +2,20 @@
 {% load static %}
 {% load django_bootstrap5 %}
 {% block title %}Login{% endblock %}
-<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
 {% block page_content %}
-<div class="container py-4 text-center" id="loginContainer">
-    <form class="form-login">
-        <img class="mb-4" src="/media/RG.png" alt="RG Logo" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please log in or sign in</h1>
-        <input type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
+<div class="container py-4 text-center">
+    <img class="mb-4" src="/media/RG.png" alt="RG Logo" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please log in or sign in</h1>
+    <form method="post" class="form-login">
+        {% csrf_token %}
+        <div class="form-outline form-white mb-4">
+            <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username"/>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        <div class="form-outline form-white mb-4">
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"/>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block mx-5">Log in</button>
     </form>
+    <p class="mt-5 mb-3 text-muted">&copy; 2023-{% now "Y" %}</p>
 </div>
 {% endblock %}
