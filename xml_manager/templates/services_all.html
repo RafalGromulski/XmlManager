@@ -2,5 +2,139 @@
 {% load django_bootstrap5 %}
 {% block title %} All services {% endblock %}
 {% block page_content %}
-
+<div class="container-fluid">
+    <div class="jumbotron">
+        <p class="lead">Hello: {{user.username}}
+            <a href="{% url 'logout' %}"
+               class="btn btn-danger btn-lg active mx-4"
+               role="button"
+               aria-pressed="true"
+               style="float: right;">Logout
+                <i class="bi bi-box-arrow-left"></i></a>
+        </p>
+        <h5 class="display-6 text-center my-4">All services</h5>
+        <div class="row text-center">
+            <div class="col">
+                <a href="{% url 'services_to_served' %}"
+                   class="btn btn-dark"
+                   role="button"
+                   aria-pressed="true"
+                   style="width:100%;">Services to served</a>
+            </div>
+            <div class="col">
+                <a href="{% url 'services_served' %}"
+                   class="btn btn-dark"
+                   role="button"
+                   aria-pressed="true"
+                   style="width:100%;">Served services</a>
+            </div>
+            <div class="col">
+                <a href="{% url 'services_all' %}"
+                   class="btn btn-dark"
+                   role="button"
+                   aria-pressed="true"
+                   style="width:100%;">All services</a>
+            </div>
+        </div>
+        <hr class="my-4">
+    </div>
+    <form>
+        <div class="row g-2 mb-4">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="mdo@example.com">
+                    <label for="floatingInputGrid">Email address</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelectGrid1">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelectGrid">Works with selects</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInputGrid2" placeholder="name@example.com" value="mdo@example.com">
+                    <label for="floatingInputGrid">Email address</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInputGrid3" placeholder="name@example.com" value="mdo@example.com">
+                    <label for="floatingInputGrid">Email address</label>
+                </div>
+            </div>
+        </div>
+        <!--        <div class="row g-2 mb-4">-->
+        <!--            <div class="col-md">-->
+        <!--                <div class="form-floating">-->
+        <!--                    <input type="email" class="form-control" id="floatingInputGrid4" placeholder="name@example.com" value="mdo@example.com">-->
+        <!--                    <label for="floatingInputGrid">Email address</label>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-md">-->
+        <!--                <div class="form-floating">-->
+        <!--                    <select class="form-select" id="floatingSelectGrid5">-->
+        <!--                        <option selected>Open this select menu</option>-->
+        <!--                        <option value="1">One</option>-->
+        <!--                        <option value="2">Two</option>-->
+        <!--                        <option value="3">Three</option>-->
+        <!--                    </select>-->
+        <!--                    <label for="floatingSelectGrid">Works with selects</label>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-md">-->
+        <!--                <div class="form-floating">-->
+        <!--                    <input type="email" class="form-control" id="floatingInputGrid5" placeholder="name@example.com" value="mdo@example.com">-->
+        <!--                    <label for="floatingInputGrid">Email address</label>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-md">-->
+        <!--                <div class="form-floating">-->
+        <!--                    <input type="email" class="form-control" id="floatingInputGrid6" placeholder="name@example.com" value="mdo@example.com">-->
+        <!--                    <label for="floatingInputGrid">Email address</label>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </form>
+    <div class="table-responsive-xl mt-3">
+        <table class="table table-sm table-bordered table-light table-hover text-center" border="1">
+            <thead class="table-secondary align-middle border-dark">
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Trust Service Provider</th>
+                <th scope="col">Service Name</th>
+                <th scope="col">TSP Url</th>
+                <th scope="col">CRL Url</th>
+                <th scope="col">Status of CRL Url</th>
+                <th scope="col">Service Status</th>
+                <th scope="col">Type of Service</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody class="align-middle table-group-divider">
+            {% for service in all_services %}
+            <tr>
+                <td scope="row">{{ forloop.counter }}</td>
+                <td>{{ service.tsp_name }}</td>
+                <td>{{ service.service_name }}</td>
+                <td>{{ service.tsp_url }}</td>
+                <td>{{ service.crl_url }}</td>
+                <td>{{ service.crl_url_status_app }}</td>
+                <td>{{ service.service_status }}</td>
+                <td>{{ service.service_type }}</td>
+                <td>{{ service.service_status_app }}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
