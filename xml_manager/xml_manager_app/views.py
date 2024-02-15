@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
-from django.shortcuts import render
-from django.views.generic import TemplateView, View
+from django.shortcuts import redirect, render
+from django.views.generic import DetailView, TemplateView, View
 
 from .filters import DataFilter
 from .models import TspServiceDetails
@@ -60,5 +60,46 @@ class AllServicesView(View):
         return render(request, self.template_name, context)
 
 
-class ServiceDetailsView(TemplateView):
+class ServiceDetailsView(LoginRequiredMixin, DetailView):
     template_name = "service_details.html"
+    model = TspServiceDetails
+    context_object_name = "trust_service"
+
+
+class ConfirmServiceView(LoginRequiredMixin, View):
+    model = TspServiceDetails
+    template_name = "confirm_service.html"
+
+    def get(self, request, pk):
+        tsp_object = self.model.objects.get(pk=pk)
+        context = {"tsp_object": tsp_object}
+        return render(request, self.template_name, context)
+
+    def post(self, request, pk):
+        tsp_object = self.model.objects.get(pk=pk)
+        tsp_object.service_status_app = "Served"
+        tsp_object.save()
+        return redirect("services_to_served")
+
+
+# class CrlUrlFormView(LoginRequiredMixin, UpdateView):
+#     model = TspServiceInfo
+#     template_name = "crl_url_form.html"
+#     form_class = CrlUrlForm
+#     success_url = "/services_to_served/"
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["tsp_object"] = self.model.objects.get(id=self.kwargs["pk"])
+#         return context
+#
+#     def get_initial(self):
+#         initial = super().get_initial()
+#         initial["crl_url"] = self.model.objects.get(id=self.kwargs["pk"]).crl_url
+#         return initial
+#
+#     def form_valid(self, form):
+#         self.object.service_status_app = "Obsłużona"
+#         self.object.crl_url_status_app = "CRL URL ustalony"
+#         form.save()
+#         return super().form_valid(form)

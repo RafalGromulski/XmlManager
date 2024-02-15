@@ -73,7 +73,10 @@
             <tbody class="align-middle table-group-divider">
             {% for service in services_to_served %}
             <tr>
-                <td scope="row">{{ forloop.counter }}</td>
+                <td scope="row">{{ forloop.counter }}
+                    <a href="{% url 'service_details' service.id %}" data-toggle="tooltip" title="More information about service">
+                        <i class="bi bi-info-square" style="color:black"></i></a>
+                </td>
                 <td>{{ service.tsp_name }}</td>
                 <td>{{ service.service_name }}</td>
                 <td>{{ service.tsp_url }}</td>
@@ -82,7 +85,10 @@
                 <td>{{ service.service_status }}</td>
                 <td>{{ service.service_type }}</td>
                 <td>{{ service.service_status_app }}</td>
-                <td></td>
+                <td>
+                    <i class="bi bi-pencil-square"></i>
+                    <i class="bi bi-check-square"></i>
+                </td>
             </tr>
             {% endfor %}
             </tbody>

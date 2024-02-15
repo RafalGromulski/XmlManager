@@ -31,7 +31,7 @@ class TspServiceDetails(models.Model):
         max_length=100,
         choices=ServiceStatus.choices,
     )
-    service_digital_id = models.TextField(verbose_name="Service ID", default="")
+    service_digital_id = models.TextField(verbose_name="Digital ID", default="")
 
     def __str__(self):
         return "TSP: " + str(self.tsp_name) + " — Service: " + str(self.service_name)

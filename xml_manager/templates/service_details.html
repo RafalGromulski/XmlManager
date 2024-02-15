@@ -2,5 +2,55 @@
 {% load django_bootstrap5 %}
 {% block title %} Details of service {% endblock %}
 {% block page_content %}
-
+<div class="container-fluid">
+    <div class="jumbotron">
+        <button type="button"
+                class="btn btn-dark"
+                aria-pressed="true"
+                onClick="history.back();"
+                style="width:12%;">
+            <i class="bi bi-arrow-return-left"></i> Powrót
+        </button>
+        <h5 class="display-6 text-center my-4">Details of service: {{ trust_service.service_name }}</h5>
+        <hr class="my-4">
+    </div>
+    <div class="table-responsive-xl mt-3">
+        <table class="table table-sm table-bordered table-light table-hover text-center" border="1">
+            <thead class="table-secondary align-middle border-dark">
+            <tr>
+                <th class="th-sm align-middle" scope="col">ID</th>
+                <th scope="col">Country code</th>
+                <th scope="col">Country</th>
+                <th scope="col">Trust service provider</th>
+                <th scope="col">Service name</th>
+                <th scope="col">Service status</th>
+                <th scope="col">Service start date</th>
+                <th scope="col">TSP Url</th>
+                <th scope="col">CRL Url</th>
+                <th scope="col">CRL Url status</th>
+                <th scope="col">Service type</th>
+                <th scope="col">Status in Xml Manager</th>
+                <th scope="col">Digital ID</th>
+            </tr>
+            </thead>
+            <tbody class="align-middle table-group-divider">
+            <tr>
+                <td>{{ trust_service.id }}</td>
+                <td>{{ trust_service.country_code }}</td>
+                <td>{{ trust_service.country_name }}</td>
+                <td>{{ trust_service.tsp_name }}</td>
+                <td>{{ trust_service.service_name }}</td>
+                <td>{{ trust_service.service_status }}</td>
+                <td>{{ trust_service.service_start_date|date:"Y-m-d" }}</td>
+                <td>{{ trust_service.tsp_url }}</td>
+                <td>{{ trust_service.crl_url }}</td>
+                <td>{{ trust_service.crl_url_status_app }}</td>
+                <td>{{ trust_service.service_type }}</td>
+                <td>{{ trust_service.service_status_app }}</td>
+                <td>{{ trust_service.service_digital_id }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
