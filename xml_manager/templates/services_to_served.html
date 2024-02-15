@@ -36,22 +36,36 @@
                    style="width:100%;">All services</a>
             </div>
         </div>
+        <hr class="my-4">
     </div>
-    <form>
-
+    <form action="" method="get" class="row row-cols-sm-4 g-2 align-items-center" id="form1">
+        {% bootstrap_form data_filter.form show_label=False %}
+        <div class="row mx-0">
+            <div class="col">
+                <button type="submit" class="mx-0 btn btn-outline-dark" style="width:100%">Search</button>
+            </div>
+            <div class="col">
+                {% if data_filter.is_bound %}
+                <a href="{% url 'services_all' %}"
+                   class="mx-0 btn btn-outline-dark"
+                   role="button"
+                   style="width:100%">Clear</a>
+                {% endif %}
+            </div>
+        </div>
     </form>
     <div class="table-responsive-xl mt-3">
         <table class="table table-sm table-bordered table-light table-hover text-center" border="1">
             <thead class="table-secondary align-middle border-dark">
             <tr>
                 <th scope="col">No.</th>
-                <th scope="col">Trust Service Provider</th>
+                <th scope="col">Trust service provider</th>
                 <th scope="col">Service Name</th>
                 <th scope="col">TSP Url</th>
                 <th scope="col">CRL Url</th>
-                <th scope="col">Status of CRL Url</th>
+                <th scope="col">CRL Url status</th>
                 <th scope="col">Service Status</th>
-                <th scope="col">Type of Service</th>
+                <th scope="col">Service type</th>
                 <th scope="col">Status</th>
                 <th scope="col">Actions</th>
             </tr>
