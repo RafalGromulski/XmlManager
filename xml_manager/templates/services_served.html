@@ -82,8 +82,10 @@
                 <td>{{ service.crl_url }}</td>
                 <td>{{ service.crl_url_status_app }}</td>
                 <td>
-                    <i class="bi bi-pencil-square"></i>
-                    <i class="bi bi-check-square"></i>
+                    <a href="{% url 'crl_url_modify' service.id %}"
+                       data-toggle="tooltip"
+                       title="Modify service">
+                        <i class="bi bi-pencil-square mx-2" style="color:black"></i></a>
                 </td>
             </tr>
             {% endfor %}

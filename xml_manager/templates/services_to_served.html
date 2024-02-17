@@ -86,8 +86,16 @@
                 <td>{{ service.service_type }}</td>
                 <td>{{ service.service_status_app }}</td>
                 <td>
-                    <i class="bi bi-pencil-square"></i>
-                    <i class="bi bi-check-square"></i>
+                    {% if service.service_status_app != "Not served (withdrawn)" %}
+                    <a href="{% url 'crl_url_modify' service.id %}"
+                       data-toggle="tooltip"
+                       title="Modify service">
+                        <i class="bi bi-pencil-square mx-2" style="color:black"></i></a>
+                    {% endif %}
+                    <a href="{% url 'confirm_service' service.id %}"
+                       data-toggle="tooltip"
+                       title="Confirm service">
+                        <i class="bi bi-check-square me-2" style="color:black"></i></a>
                 </td>
             </tr>
             {% endfor %}

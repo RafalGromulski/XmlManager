@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
-{% block title %} TSL Manager - Potwierdzenie obsłużenia usługi {% endblock %}
+{% block title %} Service confirmation {% endblock %}
 {% block page_content %}
 <div class="container-fluid">
     <div class="jumbotron">
@@ -11,9 +11,16 @@
                 style="width:12%;">
             <i class="bi bi-arrow-return-left"></i> Powrót
         </button>
-        <h5 class="display-6 text-center my-4">Service: {{ tsp_object.service_name }}</h5>
+        <!--        <h5 class="display-6 text-center my-4">Service: {{ tsp_object.service_name }}</h5>-->
         <hr class="my-4">
     </div>
+<!--    <div class="container py-4 text-center">-->
+<!--        <h5 class="h3 mb-3 font-weight-normal">Do you confirm "{{ tsp_object.service_name }}" service? </h5>-->
+<!--        <form method="post" class="form-login">-->
+<!--            {% csrf_token %}-->
+<!--            <button type="submit" class="btn btn-lg btn-outline-dark btn-block mx-5">Confirm</button>-->
+<!--        </form>-->
+<!--    </div>-->
 <!--    <section class="vh-100 gradient-custom">-->
 <!--        <div class="container py-5 h-50">-->
 <!--            <div class="row d-flex justify-content-center align-items-center h-100">-->
