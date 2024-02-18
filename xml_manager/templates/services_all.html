@@ -61,9 +61,9 @@
                 <th scope="col">No.</th>
                 <th scope="col">Trust service provider</th>
                 <th scope="col">Service Name</th>
-                <th scope="col">TSP Url</th>
-                <th scope="col">CRL Url</th>
-                <th scope="col">CRL Url status</th>
+                <th scope="col">TSP URL</th>
+                <th scope="col">CRL URL</th>
+                <th scope="col">CRL URL status</th>
                 <th scope="col">Service status</th>
                 <th scope="col">Service type</th>
                 <th scope="col">Status</th>
@@ -89,7 +89,7 @@
                     {% if service.service_status_app != "Not served (withdrawn)" %}
                     <a href="{% url 'crl_url_modify' service.id %}"
                        data-toggle="tooltip"
-                       title="Modify service">
+                       title="Confirm CRL URL">
                         <i class="bi bi-pencil-square mx-2" style="color:black"></i></a>
                     <a href="{% url 'confirm_service' service.id %}"
                        data-toggle="tooltip"
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary">Confirm</button>
                                 </div>
                             </div>
                         </div>

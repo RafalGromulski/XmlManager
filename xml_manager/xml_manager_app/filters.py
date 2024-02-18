@@ -19,7 +19,7 @@ class DataFilter(FilterSet):
     )
 
     crl_url_status_app = ChoiceFilter(
-        empty_label="CRL Url status...",
+        empty_label="CRL URL status...",
         choices=TspServiceDetails.CrlUrlStatus.choices,
     )
 
