@@ -80,11 +80,13 @@ WSGI_APPLICATION = "xml_manager_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASS"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        # "HOST": os.getenv("POSTGRES_HOST"),
+        # "PORT": os.getenv("POSTGRES_PORT"),
+        "HOST": "postgres_multiple_databases",
+        "PORT": "5432",
     }
 }
 
@@ -123,8 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
-# STATIC_ROOT = BASE_DIR / "static"
-STATICFILES_DIRS = ["static"]
+STATIC_ROOT = BASE_DIR / "static"
+# STATICFILES_DIRS = ["static"]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
