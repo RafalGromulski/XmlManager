@@ -16,12 +16,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG") == "True"
+DEBUG = os.environ.get("DEBUG") == "False"
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
-
-# Application definition
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8080",
+]
 
 INSTALLED_APPS = [
     "jazzmin",
@@ -66,10 +67,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "xml_manager_project.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.sqlite3",
@@ -90,6 +87,12 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = [
+]
+
+CRONJOBS = [
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -108,18 +111,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
+TIME_ZONE = "Europe/Warsaw"
 USE_I18N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -146,51 +144,37 @@ BOOTSTRAP5 = {
     #     "integrity": "sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx",
     #     "crossorigin": "anonymous",
     # },
-
     # "javascript_url": {
     #     "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js",
     #     "integrity": "sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa",
     #     "crossorigin": "anonymous",
     # },
-
     # # The complete URL to the Bootstrap CSS theme file (None means no theme).
     # "theme_url": None,
-
     # # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap5.html).
     # 'javascript_in_head': False,
-
     # Wrapper class for non-inline fields.
     # The default value "mb-3" is the spacing as used by Bootstrap 5 example code.
     'wrapper_class': 'mb-2',
-
     # Wrapper class for inline fields.
     # The default value is empty, as Bootstrap5 example code doesn't use a wrapper class.
     'inline_wrapper_class': '',
-
     # Label class to use in horizontal forms.
     'horizontal_label_class': 'col-sm-3',
-
     # Field class to use in horizontal forms.
     'horizontal_field_class': 'col-sm-12',
-
     # Field class used for horizontal fields withut a label.
     'horizontal_field_offset_class': 'offset-sm-2',
-
     # Set placeholder attributes to label if no placeholder is provided.
     'set_placeholder': True,
-
     # Class to indicate required field (better to set this in your Django form).
     'required_css_class': '',
-
     # Class to indicate field has one or more errors (better to set this in your Django form).
     'error_css_class': '',
-
     # Class to indicate success, meaning the field has valid input (better to set this in your Django form).
     'success_css_class': '',
-
     # Enable or disable Bootstrap 5 server side validation classes (separate from the indicator classes above).
     'server_side_validation': False,
-
     # Renderers (only set these if you have studied the source and understand the inner workings).
     'formset_renderers':{
         'default': 'django_bootstrap5.renderers.FormsetRenderer',
